@@ -4,13 +4,13 @@
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Leke - Tienda</title>
+<title>Snackearte - Tienda</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&display=swap" rel="stylesheet">
 <style>
    body {
-    background-color: #F4ECFA;
+    background-color: #9eb51c;
     color: #4A4A4A;
-    font-family: 'League Spartan', sans-serif;
+    font-family: 'Nourd', sans-serif;
     margin: 0;
     padding: 0;
 }
@@ -784,11 +784,8 @@ button[type="button"]:active {
 
 <div class="social-footer">
   <p style="font-size: 12px; margin: 5px 0 10px; color: #666;">Seguinos en Instagram y TikTok</p>
-  <a href="https://instagram.com/leke.arg" target="_blank" rel="noopener noreferrer">
+  <a href="https://instagram.com/snackearte.nutri" target="_blank" rel="noopener noreferrer">
     <img src="https://img.icons8.com/color/48/000000/instagram-new.png" alt="Instagram">
-  </a>
-  <a href="https://tiktok.com/@leke.arg1" target="_blank" rel="noopener noreferrer">
-    <img src="https://img.icons8.com/color/48/000000/tiktok--v1.png" alt="TikTok">
   </a>
 </div>
 </div>
@@ -796,21 +793,21 @@ button[type="button"]:active {
 const productsData = [
    
    {
-    name: "New York Cookie Oreo",
-    category: "Cookies",
-    description: "Con chips de chocolate y relleno con galletita oreo.",
+    name: "Avena y Chips de Chocolate",
+    category: "Galletitas",
+    description: "Harina integral, avena y chips de chocolate.",
     image: "https://i.imgur.com/7oW14Of.jpeg",
     options: [
-      "Unidad $5000",
+      "Unidad $3.600",
     ]
   },
      {
-    name: "New York Cookie Malvavisco",
-    category: "Cookies",
-    description: "Con chips de chocolate, base de galletita y relleno con malvavisco.",
+    name: "Cacao y Nueces",
+    category: "Galletitas",
+    description: "Harina integral, cacao y nueces.",
     image: "https://i.imgur.com/UIFXuAZ.png",
     options: [
-      "Unidad $5000",
+      "Unidad $4.500",
     ]
   },
     {
@@ -885,30 +882,27 @@ name: "Box degustación",
   },
   {
 
-    name: "Pan integral",
-    category: "Productos integrales",
-    description: "Pan integral, elaborado artesanalmente. Al ser un producto sin conservantes, recomendamos conservarlo en heladera o freezer desde el primer día para mantener su frescura. Se conserva en heladera (7 días) o freezer (3 meses). Peso: 600g.",
+    name: "100% integral",
+    category: "Panes",
+    description: "Pan integral con mix de semillas. Puede pedirse con o sin sal, aclararlo en las notas. Peso: 1kg.",
     image: "https://i.imgur.com/HwHmwXy.jpeg",
     options: [
-      "Unidad $3600",
-      "Unidad cortado $4600",
-      "Promo 3 unidades $10000",
-      "Promo 3 unidades cortadas $13000"
+      "$6.000"
     ]
   },
   {
-    name: "Fosforitos rellenos de jamón y queso",
-    category: "Catering",
-    description: "Más de 4 docenas: Encargar con 7 días de anticipación. ",
+    name: "Semi Integral",
+    category: "Panes",
+    description: "Pan 50% integral con mix de semillas. Puede pedirse con o sin sal, aclararlo en las notas. Peso: 1kg. ",
     image: "https://i.imgur.com/lHOa0zA.jpeg",
     options: [
-      "12 unidades $23.000"
+      "$6.000"
     ]
   },
   {
-    name: "Prepizza integral",
-    category: "Productos integrales",
-    description: "Pre pizza integral de tomate. Cocinar 5 min con queso + toppings. Freezer: 3 meses.",
+    name: "Tipo Artesano",
+    category: "Panes",
+    description: "Ideal para sanguchitos",
     image: "https://i.imgur.com/KM3M6T7.png",
     options: [
       "Unidad $3300",
@@ -1055,7 +1049,7 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
   }
 
   // Armamos el mensaje
-  let message = "Hola Leke! Quiero hacer un pedido:\n\n";
+  let message = "Hola Snackearte! Quiero hacer un pedido:\n\n";
 
   let subtotal = 0;
   cart.forEach(item => {
@@ -1096,7 +1090,7 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
   // Si ya tiene envío gratis o no aplica, enviar directo
   message = construirMensajeCompleto(message, subtotal, envioValor, envioTexto, totalFinal, name, address, timbre, cross, localidadTexto, notes, payment);
 
-  const whatsappUrl = `https://wa.me/541153107714?text=${encodeURIComponent(message)}`;
+  const whatsappUrl = `https://wa.me/541130587546?text=${encodeURIComponent(message)}`;
 
   submitSound.play().catch(() => {});
 
@@ -1117,8 +1111,8 @@ function construirMensajeCompleto(messageBase, subtotal, envioValor, envioTexto,
 
   if (payment === "transferencia") {
     message += `_*Datos para la transferencia:*_\n`;
-    message += `_*Alias: leke.arg*_\n`;
-    message += `_*Titular: Brenda de Oar*_\n\n`;
+    message += `_*Alias: camila.migale*_\n`;
+    message += `_*Titular: Camila Migale*_\n\n`;
     message += `Una vez realizada la transferencia, por favor enviame el comprobante para confirmar y preparar tu pedido lo antes posible. ¡Gracias! 😊\n\n`;
   } else {
     message += `Pago en efectivo al momento de la entrega.\n\n`;
