@@ -93,17 +93,17 @@ input, select, textarea {
   padding: 12px;
   font-family: inherit;
   margin-top: 4px;
-  border: 1px solid #f9f8dc;
+  border:2px solid #9eb51c;;
   border-radius: 8px;
   background-color: #FFFFFF;
   color: #4A4A4A;
   box-sizing: border-box; /* clave: evita que padding sume ancho extra */
-  font-size: 16px; /* legible en móvil */
+  font-size: 16px; /* legible en móvil -*/
 }
 /* Select de productos más llamativo */
 .info select:first-of-type {
-  border: 2px solid #f9f8dc;
-  background-color: #fff;
+  border: 2px solid #9eb51c;
+  background-color: #FFFFFF;
   font-weight: 500;
   color: #666;
   cursor: pointer;
@@ -111,13 +111,13 @@ input, select, textarea {
 }
 
 .info select:first-of-type:hover {
-  border-color: #f9f8dc;
-  background-color: #f9f7dc;
+  border-color: #9eb51c;
+  background-color: #fff;
 }
 
 .info select:first-of-type:focus {
   outline: none;
-  border-color: #f9f8dc;
+  border-color: #9eb51c;
   box-shadow: 0 0 0 3px rgba(184, 154, 217, 0.2);
 }
 /* Botón: full width, sin cortes */
@@ -163,7 +163,8 @@ button:hover {
 
 /* Categorías colapsables */
 .category-header {
-    background: #FFFFFF;
+    background: #9eb51c;
+    color: #f9f8dc;
     border: 1px solid #f9f8dc;
     border-radius: 10px;
     padding: 14px 45px 14px 14px;
@@ -175,7 +176,9 @@ button:hover {
 }
 
 .category-header:hover {
-    background: #9eb51c;
+    background: #fff;
+    color: #9eb51c;
+    border-color: #9eb51c;
 }
 
 /* Flecha indicadora */
@@ -187,8 +190,7 @@ button:hover {
     width: 12px;
     height: 12px;
     border-right: 3px solid #666;
-    border-right: 3px solid #666;
-    border-bottom: 3px solid ;
+    border-bottom: 3px solid #666;
     transform: translateY(-50%) rotate(45deg);
     transition: transform 0.3s ease;
 }
@@ -196,6 +198,8 @@ button:hover {
 /* Flecha rota cuando la categoría está abierta */
 .category-header.active::after {
     transform: translateY(-50%) rotate(-135deg);
+    border-right: 3px solid #f9f7dc;
+    border-bottom: 3px solid #f9f7dc;
 }
 
 .category-content {
@@ -345,6 +349,9 @@ button:hover {
     will-change: transform;
 }
 
+.product:hover img {
+    transform: scale(1.12);
+}
 
 /* Fade-in + slide-up al cargar productos (después de que se muestren) */
 .product {
@@ -529,7 +536,7 @@ button[type="button"]:active {
   align-items: flex-start;
   justify-content: space-between;
   gap: 12px;
-  background: #9eb51c;
+  background: #fff;
   padding: 10px 12px;
   border-radius: 10px;
   margin-bottom: 8px;
@@ -614,9 +621,9 @@ button[type="button"]:active {
 }
 
 #infoEnvio.falta-envio {
-  background: #fff3cd;
-  border-color: #ff9800;
-  color: #856404;
+  background: #FFFFFF;
+  border-color: #e60000;
+  color: #e60000;
 }
 
 @keyframes pulseInfo {
@@ -661,7 +668,7 @@ button[type="button"]:active {
 }
 
 .modal-content h3 {
-  color: #ff9800;
+  color: #e60000;
   margin: 0 0 15px 0;
   font-size: 22px;
 }
@@ -676,7 +683,7 @@ button[type="button"]:active {
 .modal-content .falta-monto {
   font-size: 24px;
   font-weight: bold;
-  color: #ff5722;
+  color: #e60000;
   margin: 10px 0;
 }
 
@@ -698,28 +705,30 @@ button[type="button"]:active {
 }
 
 .btn-volver {
-  background: #6c757d;
+  background: #28a745;
   color: white;
 }
 
 .btn-volver:hover {
-  background: #5a6268;
+  background: #28a745;
+  color: white;
 }
 
 .btn-continuar {
-  background: #ff9800;
+  background: #e60000;
   color: white;
 }
 
 .btn-continuar:hover {
-  background: #e68900;
+  background: #e60000;
+  color: white;
 }
+
 </style>
 </head>
 <body><div id="notification">Se agregó al carrito</div>
 <div class="container">
-<div class="brand-logo">
-  <img src="https://i.imgur.com/Rnt7Mqo.png" alt="Leke"> 
+<div class="brand-logo"> 
 </div>
 <div class="banner-carousel">
   <img src="https://github.com/snackearte-tienda/hacetupedido/blob/main/1.png?raw=true">
@@ -730,6 +739,10 @@ button[type="button"]:active {
 
 
 <form id="orderForm">
+<p style="text-align: center; color: #000000; font-size: 18px; margin: 30px 0 10px; font-weight: 500; font-family:Cossette Texte, sans-serif;">
+   Selecciona la categoría, elegí los productos, agregalos al carrito y a DISFRUTAR!
+</p>
+
 <div id="products" class="products"></div>
 <div class="form-section">
 <div id="carritoContainer" style="margin-top: 20px;">
@@ -764,7 +777,7 @@ button[type="button"]:active {
 </div>
 
 
-<label>Aclaraciones</label>
+<label>Notas</label>
 <textarea id="notes" rows="2"></textarea>
 <label>Método de pago</label>
 <select id="paymentMethod" required="">
@@ -980,10 +993,6 @@ const productsData = [
 const container = document.getElementById("products");
 let cart = [];
 
-// Sonidos – usa los links que te salen con "Raw" y cambiados a github.io
-const addToCartSound = new Audio('https://hacetupedido.github.io/Leke-tienda/se%20añadíó%20carrito.mp3');  // ajustá con tu link real
-const openCategorySound = new Audio('https://hacetupedido.github.io/Leke-tienda/categorías.mp3');  // ajustá
-const submitSound = new Audio('https://hacetupedido.github.io/Leke-tienda/WhatsApp.mp3');  // ajustá
 const categories = [...new Set(productsData.map(p => p.category))];
 
 categories.forEach(cat => {
@@ -1011,12 +1020,12 @@ section.innerHTML = `
         <div class="info">
           <p><strong>${prod.name}</strong></p>
           <p>${prod.description}</p>
-          <label>Opción</label>
+          <label>Presentacíon</label>
          <select id="product${Math.random()}">
-  <option value="">👇 Ver precios y opciones</option>
+  <option value="">Ver precios y opciones</option>
   ${prod.options.map(opt => `<option value="${opt}">${opt}</option>`).join("")}
 </select>
-          <label>Opción</label>
+          <label>Cantidad</label>
 <select id="product${Math.random()}">
             ${[...Array(10)].map((_, n) => `<option value="${n+1}">${n+1}</option>`).join("")}
           </select>
@@ -1099,8 +1108,6 @@ document.getElementById("orderForm").addEventListener("submit", function(e) {
 
   const whatsappUrl = `https://wa.me/541130587546?text=${encodeURIComponent(message)}`;
 
-  submitSound.play().catch(() => {});
-
   try {
     window.open(whatsappUrl, "_blank");
   } catch (err) {
@@ -1117,10 +1124,7 @@ function construirMensajeCompleto(messageBase, subtotal, envioValor, envioTexto,
   message += `*Total a pagar: $${totalFinal.toLocaleString('es-AR')}*\n\n`;
 
   if (payment === "transferencia") {
-    message += `_*Datos para la transferencia:*_\n`;
-    message += `_*Alias: camila.migale*_\n`;
-    message += `_*Titular: Camila Migale*_\n\n`;
-    message += `Una vez realizada la transferencia, por favor enviame el comprobante para confirmar y preparar tu pedido lo antes posible. ¡Gracias! 😊\n\n`;
+     message += `Pago por transferencia.\n\n`
   } else {
     message += `Pago en efectivo al momento de la entrega.\n\n`;
   }
@@ -1130,9 +1134,9 @@ function construirMensajeCompleto(messageBase, subtotal, envioValor, envioTexto,
   message += `🔔 Timbre / Depto / Piso: ${timbre}\n`;
   message += `🚦 Entre calles: ${cross}\n`;
   message += `📍 Localidad: ${localidadTexto}\n`;
-  message += `📝 Aclaraciones: ${notes}\n\n`;
+  message += `📝 Notas: ${notes}\n\n`;
 
-  message += `💳 Pago: ${payment === "transferencia" ? "Transferencia" : "Efectivo"}\n\n`;
+ // message += `💳 Pago: ${payment === "transferencia" ? "Transferencia" : "Efectivo"}\n\n`;
   message += "¡Muchas gracias! 😊";
 
   return message;
@@ -1142,8 +1146,6 @@ function showNotification() {
   const notif = document.getElementById("notification");
   notif.classList.add("visible");
   notif.style.display = "block";
-  
-  addToCartSound.play().catch(err => console.log("Sonido bloqueado:", err));
 
   setTimeout(() => {
     notif.classList.remove("visible");
@@ -1213,7 +1215,6 @@ function toggleCategory(header) {
   if (!isOpen) {
     content.classList.add("active");
     header.classList.add("active");
-    openCategorySound.play().catch(err => console.log("Sonido bloqueado:", err));
     
     setTimeout(() => {
       const firstProduct = content.querySelector(".product");
@@ -1295,8 +1296,7 @@ function actualizarInfoEnvio() {
     infoDiv.classList.add("envio-gratis");
   } else {
     const falta = config.minimoGratis - total;
-    texto = `⚠️ Te faltan solo <strong>$${falta.toLocaleString('es-AR')}</strong> para ENVÍO GRATIS<br>
-             <small>Envío a ${zona}: $${config.costoEnvio.toLocaleString('es-AR')} | Gratis desde $${config.minimoGratis.toLocaleString('es-AR')}</small>`;
+    texto = ` <small>Envío a ${zona}: $${config.costoEnvio.toLocaleString('es-AR')} | <br>Gratis desde $${config.minimoGratis.toLocaleString('es-AR')}</small>`;
     infoDiv.classList.add("falta-envio");
   }
 
@@ -1320,7 +1320,6 @@ function cerrarModal() {
 function continuarSinEnvioGratis() {
   if (pedidoPendiente) {
     const whatsappUrl = `https://wa.me/541130587546?text=${encodeURIComponent(pedidoPendiente)}`;
-    submitSound.play().catch(() => {});
     try {
       window.open(whatsappUrl, "_blank");
     } catch (err) {
@@ -1335,10 +1334,10 @@ function continuarSinEnvioGratis() {
 <!-- Modal de confirmación de envío -->
 <div id="modalConfirmacion">
   <div class="modal-content">
-    <h3>⚠️ ¡Espera un momento!</h3>
+    <h3>⚠️ Espera</h3>
     <p>Todavía no alcanzaste el <strong>envío GRATIS</strong></p>
-    <p class="falta-monto">Te faltan solo <span id="modalFalta">$0</span></p>
-    <p>¿Querés agregar algo más al carrito y ahorrar en el envío?</p>
+    <p class="falta-monto">Te faltan <span id="modalFalta">$0</span></p>
+    <p>¿Querés agregar algo más y ahorrarte el envío?</p>
     <div class="modal-buttons">
       <button class="btn-volver" onclick="cerrarModal()">Volver y agregar más</button>
       <button class="btn-continuar" onclick="continuarSinEnvioGratis()">Continuar igual</button>
